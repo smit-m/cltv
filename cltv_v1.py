@@ -48,3 +48,20 @@ uk_data_group.head()
 # Average Order Value
 uk_data_group['avg_order_value']=uk_data_group['spent_money']/uk_data_group['num_transactions']
 
+uk_data_group.head()
+
+
+
+purchase_frequency=sum(uk_data_group['num_transactions'])/uk_data_group.shape[0]
+# Repeat Rate
+repeat_rate=uk_data_group[uk_data_group.num_transactions > 1].shape[0]/uk_data_group.shape[0]
+#Churn Rate
+churn_rate=1-repeat_rate
+purchase_frequency,repeat_rate,churn_rate
+
+# Profit Margin
+uk_data_group['profit_margin']=uk_data_group['spent_money']*0.05
+uk_data_group.head()
+
+
+
