@@ -23,3 +23,6 @@ filtered_data.Country.value_counts()[:10].plot(kind='bar')
 
 uk_data=data[data.Country=='United Kingdom']
 uk_data.info()
+
+uk_data.describe()
+
