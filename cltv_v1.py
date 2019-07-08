@@ -15,3 +15,11 @@ import time
 
 data = pd.read_excel("Online_Retail.xlsx")
 data.head()
+
+filtered_data=data[['Country','CustomerID']].drop_duplicates()
+
+#Top ten country's customer
+filtered_data.Country.value_counts()[:10].plot(kind='bar')
+
+uk_data=data[data.Country=='United Kingdom']
+uk_data.info()
