@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt # for plotting graphs
 import seaborn as sns # for plotting graphs
 import datetime as dt
 import numpy as np
-import time
+
 
 data = pd.read_excel("Online Retail.xlsx")
 data.head()
