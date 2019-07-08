@@ -26,3 +26,11 @@ uk_data.info()
 
 uk_data.describe()
 
+uk_data = uk_data[(uk_data['Quantity']>0)]
+uk_data.info()
+
+uk_data=uk_data[['CustomerID','InvoiceDate','InvoiceNo','Quantity','UnitPrice']]
+
+#Calulate total purchase
+uk_data['TotalPurchase'] = uk_data['Quantity'] * uk_data['UnitPrice']
+
