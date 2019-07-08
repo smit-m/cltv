@@ -13,3 +13,5 @@ import datetime as dt
 import numpy as np
 import time
 
+data = pd.read_excel("Online_Retail.xlsx")
+data.head()
