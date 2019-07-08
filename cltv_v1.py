@@ -13,7 +13,7 @@ import datetime as dt
 import numpy as np
 import time
 
-data = pd.read_excel("Online_Retail.xlsx")
+data = pd.read_excel("Online Retail.xlsx")
 data.head()
 
 filtered_data=data[['Country','CustomerID']].drop_duplicates()
