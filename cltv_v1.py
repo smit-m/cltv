@@ -34,3 +34,12 @@ uk_data=uk_data[['CustomerID','InvoiceDate','InvoiceNo','Quantity','UnitPrice']]
 #Calulate total purchase
 uk_data['TotalPurchase'] = uk_data['Quantity'] * uk_data['UnitPrice']
 
+
+uk_data_group=uk_data.groupby('CustomerID').agg({'InvoiceDate': lambda date: (date.max() - date.min()).days,
+                                        'InvoiceNo': lambda num: len(num),
+                                        'Quantity': lambda quant: quant.sum(),
+                                        'TotalPurchase': lambda price: price.sum()})
+
+uk_data_group.head()
+
+
