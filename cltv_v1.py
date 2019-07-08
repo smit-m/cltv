@@ -64,4 +64,57 @@ uk_data_group['profit_margin']=uk_data_group['spent_money']*0.05
 uk_data_group.head()
 
 
+# Customer Value
+uk_data_group['CLV']=(uk_data_group['avg_order_value']*purchase_frequency)/churn_rate
+#Customer Lifetime Value
+uk_data_group['cust_lifetime_value']=uk_data_group['CLV']*uk_data_group['profit_margin']
+uk_data_group.head()
+
+uk_data['month_yr'] = uk_data['InvoiceDate'].apply(lambda x: x.strftime('%b-%Y'))
+uk_data.head()
+
+sale=uk_data.pivot_table(index=['CustomerID'],columns=['month_yr'],values='TotalPurchase',aggfunc='sum',fill_value=0).reset_index()
+sale.head()
+
+sale['CLV']=sale.iloc[:,2:].sum(axis=1)
+sale.head()
+
+X=sale[['Dec-2011','Nov-2011', 'Oct-2011','Sep-2011','Aug-2011','Jul-2011']]
+y=sale[['CLV']]
+
+#split training set and test set
+from sklearn.cross_validation import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y,random_state=0)
+
+
+# import model
+from sklearn.linear_model import LinearRegression
+
+# instantiate
+linreg = LinearRegression()
+
+# fit the model to the training data (learn the coefficients)
+linreg.fit(X_train, y_train)
+
+# make predictions on the testing set
+y_pred = linreg.predict(X_test)
+# print the intercept and coefficients
+print(linreg.intercept_)
+print(linreg.coef_)
+
+
+from sklearn import metrics
+
+# compute the R Square for model
+print("R-Square:",metrics.r2_score(y_test, y_pred))
+
+# calculate MAE using scikit-learn
+print("MAE:",metrics.mean_absolute_error(y_test,y_pred))
+
+#calculate mean squared error
+print("MSE",metrics.mean_squared_error(y_test, y_pred))
+# compute the RMSE of our predictions
+print("RMSE:",np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+
+
 
