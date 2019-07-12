@@ -45,6 +45,9 @@ uk_data_group.head()
 uk_data_group.columns=['num_days','num_transactions','num_units','spent_money']
 uk_data_group.head()
 
+
+####################################################################
+
 # Average Order Value
 uk_data_group['avg_order_value']=uk_data_group['spent_money']/uk_data_group['num_transactions']
 
