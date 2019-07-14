@@ -66,6 +66,7 @@ purchase_frequency,repeat_rate,churn_rate
 uk_data_group['profit_margin']=uk_data_group['spent_money']*0.05
 uk_data_group.head()
 
+####################################################################
 
 # Customer Value
 uk_data_group['CLV']=(uk_data_group['avg_order_value']*purchase_frequency)/churn_rate
