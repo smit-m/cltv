@@ -86,6 +86,8 @@ sale.head()
 X=sale[['Dec-2011','Nov-2011', 'Oct-2011','Sep-2011','Aug-2011','Jul-2011']]
 y=sale[['CLV']]
 
+#########################################################
+
 #split training set and test set
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y,random_state=0)
