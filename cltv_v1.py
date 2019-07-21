@@ -108,6 +108,7 @@ y_pred = linreg.predict(X_test)
 print(linreg.intercept_)
 print(linreg.coef_)
 
+#################################################
 
 from sklearn import metrics
 
