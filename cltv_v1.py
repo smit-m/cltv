@@ -86,42 +86,5 @@ sale.head()
 X=sale[['Dec-2011','Nov-2011', 'Oct-2011','Sep-2011','Aug-2011','Jul-2011']]
 y=sale[['CLV']]
 
-#########################################################
-
-#split training set and test set
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y,random_state=0)
-
-
-# import model
-from sklearn.linear_model import LinearRegression
-
-# instantiate
-linreg = LinearRegression()
-
-# fit the model to the training data (learn the coefficients)
-linreg.fit(X_train, y_train)
-
-# make predictions on the testing set
-y_pred = linreg.predict(X_test)
-# print the intercept and coefficients
-print(linreg.intercept_)
-print(linreg.coef_)
-
-#################################################
-
-from sklearn import metrics
-
-# compute the R Square for model
-print("R-Square:",metrics.r2_score(y_test, y_pred))
-
-# calculate MAE using scikit-learn
-print("MAE:",metrics.mean_absolute_error(y_test,y_pred))
-
-#calculate mean squared error
-print("MSE",metrics.mean_squared_error(y_test, y_pred))
-# compute the RMSE of our predictions
-print("RMSE:",np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
-
 
 
